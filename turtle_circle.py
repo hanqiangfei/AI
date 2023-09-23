@@ -2,7 +2,7 @@ import turtle
 
 # 基础设置
 turtle.color('red')
-turtle.pensize(10)
+turtle.pensize(5)
 turtle.speed(10)
 turtle.st()
 turtle.isvisible()
