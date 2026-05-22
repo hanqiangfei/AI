@@ -157,6 +157,27 @@ class Handler(BaseHTTPRequestHandler):
         except Exception:
             return {}
 
+    def do_HEAD(self) -> None:
+        parsed = urlparse(self.path)
+        path = parsed.path
+        if path == "/":
+            self.send_common_headers(200, "text/html; charset=utf-8")
+            self.end_headers()
+            return
+        if path == "/static/style.css":
+            self.send_common_headers(200, "text/css; charset=utf-8")
+            self.end_headers()
+            return
+        if path == "/static/app.js":
+            self.send_common_headers(200, "application/javascript; charset=utf-8")
+            self.end_headers()
+            return
+        if path.startswith("/api/"):
+            self.send_common_headers(200, "application/json; charset=utf-8")
+            self.end_headers()
+            return
+        self.send_error(404)
+
     def do_GET(self) -> None:
         parsed = urlparse(self.path)
         path = parsed.path
