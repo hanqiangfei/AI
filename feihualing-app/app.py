@@ -26,6 +26,48 @@ class PoemLine:
 
 
 POEMS: List[PoemLine] = [
+    # 小学常见古诗词
+    PoemLine("只在此山中，云深不知处", "寻隐者不遇", "贾岛", "唐"),
+    PoemLine("小时不识月，呼作白玉盘", "古朗月行", "李白", "唐"),
+    PoemLine("举头望明月，低头思故乡", "静夜思", "李白", "唐"),
+    PoemLine("飞流直下三千尺，疑是银河落九天", "望庐山瀑布", "李白", "唐"),
+    PoemLine("两岸猿声啼不住，轻舟已过万重山", "早发白帝城", "李白", "唐"),
+    PoemLine("桃花潭水深千尺，不及汪伦送我情", "赠汪伦", "李白", "唐"),
+    PoemLine("黄河远上白云间，一片孤城万仞山", "凉州词", "王之涣", "唐"),
+    PoemLine("白日依山尽，黄河入海流", "登鹳雀楼", "王之涣", "唐"),
+    PoemLine("欲穷千里目，更上一层楼", "登鹳雀楼", "王之涣", "唐"),
+    PoemLine("春眠不觉晓，处处闻啼鸟", "春晓", "孟浩然", "唐"),
+    PoemLine("夜来风雨声，花落知多少", "春晓", "孟浩然", "唐"),
+    PoemLine("空山不见人，但闻人语响", "鹿柴", "王维", "唐"),
+    PoemLine("返景入深林，复照青苔上", "鹿柴", "王维", "唐"),
+    PoemLine("独在异乡为异客，每逢佳节倍思亲", "九月九日忆山东兄弟", "王维", "唐"),
+    PoemLine("遥知兄弟登高处，遍插茱萸少一人", "九月九日忆山东兄弟", "王维", "唐"),
+    PoemLine("千山鸟飞绝，万径人踪灭", "江雪", "柳宗元", "唐"),
+    PoemLine("孤舟蓑笠翁，独钓寒江雪", "江雪", "柳宗元", "唐"),
+    PoemLine("两个黄鹂鸣翠柳，一行白鹭上青天", "绝句", "杜甫", "唐"),
+    PoemLine("窗含西岭千秋雪，门泊东吴万里船", "绝句", "杜甫", "唐"),
+    PoemLine("好雨知时节，当春乃发生", "春夜喜雨", "杜甫", "唐"),
+    PoemLine("随风潜入夜，润物细无声", "春夜喜雨", "杜甫", "唐"),
+    PoemLine("儿童相见不相识，笑问客从何处来", "回乡偶书", "贺知章", "唐"),
+    PoemLine("碧玉妆成一树高，万条垂下绿丝绦", "咏柳", "贺知章", "唐"),
+    PoemLine("不知细叶谁裁出，二月春风似剪刀", "咏柳", "贺知章", "唐"),
+    PoemLine("离离原上草，一岁一枯荣", "赋得古原草送别", "白居易", "唐"),
+    PoemLine("野火烧不尽，春风吹又生", "赋得古原草送别", "白居易", "唐"),
+    PoemLine("小荷才露尖尖角，早有蜻蜓立上头", "小池", "杨万里", "宋"),
+    PoemLine("接天莲叶无穷碧，映日荷花别样红", "晓出净慈寺送林子方", "杨万里", "宋"),
+    PoemLine("毕竟西湖六月中，风光不与四时同", "晓出净慈寺送林子方", "杨万里", "宋"),
+    PoemLine("泉眼无声惜细流，树阴照水爱晴柔", "小池", "杨万里", "宋"),
+    PoemLine("竹外桃花三两枝，春江水暖鸭先知", "惠崇春江晚景", "苏轼", "宋"),
+    PoemLine("欲把西湖比西子，淡妆浓抹总相宜", "饮湖上初晴后雨", "苏轼", "宋"),
+    PoemLine("横看成岭侧成峰，远近高低各不同", "题西林壁", "苏轼", "宋"),
+    PoemLine("不识庐山真面目，只缘身在此山中", "题西林壁", "苏轼", "宋"),
+    PoemLine("爆竹声中一岁除，春风送暖入屠苏", "元日", "王安石", "宋"),
+    PoemLine("千门万户曈曈日，总把新桃换旧符", "元日", "王安石", "宋"),
+    PoemLine("春色满园关不住，一枝红杏出墙来", "游园不值", "叶绍翁", "宋"),
+    PoemLine("等闲识得东风面，万紫千红总是春", "春日", "朱熹", "宋"),
+    PoemLine("胜日寻芳泗水滨，无边光景一时新", "春日", "朱熹", "宋"),
+
+    # 初中常见古诗词
     PoemLine("海内存知己，天涯若比邻", "送杜少府之任蜀州", "王勃", "唐"),
     PoemLine("大漠孤烟直，长河落日圆", "使至塞上", "王维", "唐"),
     PoemLine("会当凌绝顶，一览众山小", "望岳", "杜甫", "唐"),
@@ -72,9 +114,20 @@ def find_best_match(answer: str, keyword: str, used: List[str]) -> Optional[Poem
     normalized = normalize(answer)
     if not normalized or keyword not in normalized:
         return None
+
+    # 飞花令课堂场景常答半句或名句片段，如“云深不知处”。
+    # 只要片段足够长、含令字，并且能唯一落入题库诗句，就判对。
     for poem in POEMS:
-        if poem.line not in used and keyword in poem.line and normalize(poem.line) == normalized:
+        poem_text = normalize(poem.line)
+        if poem.line in used or keyword not in poem_text:
+            continue
+        if normalized == poem_text:
             return poem
+        if len(normalized) >= 4 and normalized in poem_text:
+            return poem
+        if len(poem_text) >= 4 and poem_text in normalized:
+            return poem
+
     best, score = None, 0.0
     for poem in POEMS:
         if poem.line in used or keyword not in poem.line:
@@ -82,7 +135,7 @@ def find_best_match(answer: str, keyword: str, used: List[str]) -> Optional[Poem
         ratio = SequenceMatcher(None, normalized, normalize(poem.line)).ratio()
         if ratio > score:
             best, score = poem, ratio
-    return best if best and score >= 0.82 else None
+    return best if best and score >= 0.72 else None
 
 
 def new_state(keyword: Optional[str] = None) -> Dict[str, object]:
