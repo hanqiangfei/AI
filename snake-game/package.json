@@ -1,22 +1,12 @@
 {
   "name": "snake-game",
   "private": true,
-  "version": "0.1.0",
-  "type": "module",
+  "version": "0.3.0",
+  "type": "commonjs",
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
-    "build": "tsc && vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "build": "node scripts/build.js",
+    "preview": "node scripts/preview.js"
   },
-  "dependencies": {
-    "@vitejs/plugin-react": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "typescript": "latest",
-    "vite": "latest"
-  },
-  "devDependencies": {
-    "@types/react": "^19.2.15",
-    "@types/react-dom": "^19.2.3"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }
