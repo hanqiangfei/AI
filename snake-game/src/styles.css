@@ -81,3 +81,11 @@ canvas {
   .stats { gap: 10px; }
   .stats div { min-width: 0; }
 }
+
+.signature {
+  margin-top: 16px;
+  text-align: center;
+  color: rgba(247, 251, 255, .72);
+  font-size: 13px;
+  letter-spacing: .04em;
+}
