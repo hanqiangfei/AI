@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>飞花令练习室</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="card hero">
+      <p class="eyebrow">初中诗词 · 飞花令</p>
+      <h1>飞花令练习室</h1>
+      <p class="subtitle">选择一个令字，说出含有它的古诗词名句。适合课堂热身、背诵复习和自我挑战。</p>
+      <div class="keyword-box">
+        <span>本轮令字</span>
+        <strong id="keyword">春</strong>
+      </div>
+      <div class="score-row">
+        <div><span>得分</span><b id="score">0</b></div>
+        <div><span>已答</span><b id="usedCount">0</b></div>
+      </div>
+    </section>
+
+    <section class="card panel">
+      <label for="answer">请输入诗句</label>
+      <textarea id="answer" rows="3" placeholder="例如：春蚕到死丝方尽，蜡炬成灰泪始干"></textarea>
+      <div class="actions">
+        <button id="submit">提交答案</button>
+        <button id="hint" class="secondary">给我提示</button>
+        <button id="newRound" class="secondary">换令字</button>
+      </div>
+      <p id="message" class="message">准备好了吗？</p>
+      <div id="matched" class="matched hidden"></div>
+    </section>
+
+    <section class="card choose">
+      <h2>常用令字</h2>
+      <div class="chips">
+        {{KEYWORD_CHIPS}}
+      </div>
+    </section>
+
+    <section class="card library">
+      <h2>本轮可参考诗句</h2>
+      <div id="library"></div>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
