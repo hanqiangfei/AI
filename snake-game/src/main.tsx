@@ -49,7 +49,13 @@ function App() {
   const [nextDirection, setNextDirection] = useState<Direction>('right');
   const [gameState, setGameState] = useState<GameState>('idle');
   const [score, setScore] = useState(0);
-  const [best, setBest] = useState(() => Number(localStorage.getItem('snake-best') || 0));
+  const [best, setBest] = useState(() => {
+    try {
+      return Number(window.localStorage?.getItem('snake-best') || 0);
+    } catch {
+      return 0;
+    }
+  });
 
   const speed = useMemo(() => Math.max(70, 150 - Math.floor(score / 5) * 10), [score]);
 
@@ -123,7 +129,11 @@ function App() {
           setGameState('gameover');
           setBest((currentBest) => {
             const nextBest = Math.max(currentBest, score);
-            localStorage.setItem('snake-best', String(nextBest));
+            try {
+              window.localStorage?.setItem('snake-best', String(nextBest));
+            } catch {
+              // Ignore storage errors in private browsing or restricted WebViews.
+            }
             return nextBest;
           });
           return currentSnake;
@@ -176,6 +186,19 @@ function App() {
       ctx.stroke();
     }
 
+    const roundedRect = (x: number, y: number, width: number, height: number, radius: number) => {
+      const r = Math.min(radius, width / 2, height / 2);
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + width - r, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + r);
+      ctx.lineTo(x + width, y + height - r);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - r, y + height);
+      ctx.lineTo(x + r, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+    };
+
     const drawGlowCell = (point: Point, fill: string, glow: string, radius = 8) => {
       const padding = cell * 0.12;
       const x = point.x * cell + padding;
@@ -185,7 +208,8 @@ function App() {
       ctx.shadowColor = glow;
       ctx.fillStyle = fill;
       ctx.beginPath();
-      ctx.roundRect(x, y, size, size, radius);
+      roundedRect(x, y, size, size, radius);
+      ctx.closePath();
       ctx.fill();
       ctx.shadowBlur = 0;
     };
