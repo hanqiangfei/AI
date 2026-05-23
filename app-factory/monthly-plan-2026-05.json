@@ -24,8 +24,8 @@
       2
     ],
     "failed": [],
-    "lastRunAt": "2026-05-23T04:05:00Z",
-    "lastResult": "success: built physics-buoyancy; pending Coolify deployment smoke test."
+    "lastRunAt": "2026-05-23T04:10:22Z",
+    "lastResult": "success: deployed physics-buoyancy to https://buoyancy.hanruize.com; homepage updated; HTTPS/MIME/signature smoke tests passed."
   },
   "apps": [
     {
