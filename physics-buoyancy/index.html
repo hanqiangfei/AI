@@ -3,76 +3,87 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0891b2">
-  <title>浮力闯关小游戏</title>
-  <link rel="stylesheet" href="/style.css?v=20260523">
-  <script defer src="/app.js?v=20260523"></script>
+  <meta name="theme-color" content="#0f766e">
+  <title>浮力救援队</title>
+  <link rel="stylesheet" href="/style.css?v=20260523-fun2">
+  <script defer src="/app.js?v=20260523-fun2"></script>
 </head>
 <body>
   <main class="app">
     <section class="hero">
-      <p class="eyebrow">Buoyancy Lab Game</p>
-      <h1>浮力闯关小游戏</h1>
-      <p class="intro">调节物体和液体，让小方块“漂浮、悬浮或下沉”。边玩边看懂：浮力、重力、密度和排开液体体积。</p>
+      <p class="eyebrow">Buoyancy Rescue</p>
+      <h1>浮力救援队</h1>
+      <p class="intro">小潜艇被困在不同液体里！调材料、加空心、换液体，让它漂浮、悬浮或下潜到目标区。60 秒拿三星！</p>
+    </section>
+
+    <section class="hud panel">
+      <div><span>关卡</span><b id="levelNo">1</b>/8</div>
+      <div><span>得分</span><b id="score">0</b></div>
+      <div><span>连击</span><b id="combo">0</b></div>
+      <div><span>时间</span><b id="time">60</b>s</div>
+      <button id="startBtn" type="button">开始救援</button>
     </section>
 
     <section class="panel mission" aria-live="polite">
       <div>
-        <span class="tag">第 <b id="levelNo">1</b> 关</span>
-        <h2 id="targetText">让木块漂浮在水面上</h2>
-        <p id="hintText">密度小于液体时，物体通常会漂浮。</p>
+        <span class="tag" id="badge">救援任务</span>
+        <h2 id="targetText">让潜艇漂在水面附近</h2>
+        <p id="storyText">海面有补给包，太沉会错过，太轻又不好控制。</p>
       </div>
-      <div class="scorebox">
-        <span>得分</span><b id="score">0</b>
-      </div>
+      <div class="stars" id="stars">☆☆☆</div>
     </section>
 
     <section class="grid">
       <section class="panel lab">
-        <canvas id="scene" width="720" height="480" aria-label="浮力实验水槽"></canvas>
-        <div class="result" id="result">点击“开始实验”，观察物体在液体中的状态。</div>
+        <canvas id="scene" width="760" height="500" aria-label="浮力救援游戏画面"></canvas>
+        <div class="feedback" id="feedback">按“开始救援”，再点击“试一试”检查答案。</div>
         <div class="actions">
-          <button id="runBtn" type="button">开始实验</button>
-          <button id="nextBtn" class="ghost" type="button">下一关</button>
+          <button id="tryBtn" type="button">试一试 🚀</button>
+          <button id="randomBtn" class="ghost" type="button">随机挑战 🎲</button>
+          <button id="nextBtn" class="ghost" type="button">下一关 →</button>
         </div>
       </section>
 
-      <section class="panel controls" aria-label="实验参数">
-        <label>物体材料
+      <section class="panel controls" aria-label="救援参数">
+        <label>潜艇外壳
           <select id="material">
-            <option value="wood">木头 0.60 g/cm³</option>
-            <option value="ice">冰块 0.92 g/cm³</option>
-            <option value="plastic">塑料 1.10 g/cm³</option>
-            <option value="brick">砖块 1.80 g/cm³</option>
-            <option value="iron">铁块 7.80 g/cm³</option>
+            <option value="wood">木质浮箱 0.60</option>
+            <option value="ice">冰晶舱 0.92</option>
+            <option value="plastic">塑料舱 1.10</option>
+            <option value="brick">陶瓷重舱 1.80</option>
+            <option value="iron">铁甲舱 7.80</option>
           </select>
         </label>
-        <label>液体
+        <label>所在液体
           <select id="liquid">
-            <option value="oil">食用油 0.80 g/cm³</option>
-            <option value="water" selected>清水 1.00 g/cm³</option>
-            <option value="salt">盐水 1.20 g/cm³</option>
-            <option value="honey">蜂蜜 1.40 g/cm³</option>
+            <option value="oil">油海 0.80</option>
+            <option value="water" selected>清水 1.00</option>
+            <option value="salt">盐水 1.20</option>
+            <option value="honey">蜂蜜沼泽 1.40</option>
           </select>
         </label>
-        <label>物体体积 <span id="volumeVal">120</span> cm³
+        <label>体积 <span id="volumeVal">120</span> cm³
           <input id="volume" type="range" min="60" max="220" value="120">
         </label>
-        <label>空心程度 <span id="hollowVal">0</span>%
-          <input id="hollow" type="range" min="0" max="70" value="0">
+        <label>空心舱比例 <span id="hollowVal">0</span>%
+          <input id="hollow" type="range" min="0" max="88" value="0">
         </label>
+        <div class="meter">
+          <div class="meter-label"><span>平均密度</span><b id="densityText">1.10</b></div>
+          <div class="bar"><i id="densityBar"></i></div>
+          <p id="quickTip">小窍门：空心越多，平均密度越低，更容易浮起来。</p>
+        </div>
         <div class="formula">
-          <b>观察公式</b>
-          <p>浮力 F<sub>浮</sub> = ρ<sub>液</sub> × g × V<sub>排</sub></p>
-          <p>重力 G = ρ<sub>物</sub> × g × V<sub>物</sub></p>
-          <p id="numbers">调好参数后开始实验。</p>
+          <b>游戏里的物理</b>
+          <p>密度比 = ρ物平均 ÷ ρ液</p>
+          <p>小于 1：容易上浮；约等于 1：接近悬浮；大于 1：下沉。</p>
         </div>
       </section>
     </section>
 
     <section class="panel tips">
-      <h2>闯关目标</h2>
-      <ul id="levelList"></ul>
+      <h2>救援记录</h2>
+      <ul id="log"><li>还没有救援记录，快开始第一关！</li></ul>
     </section>
 
     <footer>寒雨佳泽 3620007@QQ.com 2026年5月23日</footer>
