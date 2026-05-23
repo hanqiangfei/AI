@@ -38,66 +38,66 @@
     },
     {
       "index": 2,
-      "slug": "english-words",
-      "name": "英语单词闪卡",
-      "domain": "words.hanruize.com",
-      "legacyDomain": "words.tantu.ai",
-      "type": "learning",
-      "brief": "中小学核心词汇闪卡、默写、发音提示与掌握度记录。"
+      "slug": "physics-lab",
+      "name": "物理实验室",
+      "domain": "physicslab.hanruize.com",
+      "legacyDomain": "physicslab.tantu.ai",
+      "type": "physics",
+      "brief": "用弹簧、杠杆、斜面、浮力等交互实验理解初中物理概念，支持参数调节与观察记录。"
     },
     {
       "index": 3,
-      "slug": "idiom-challenge",
-      "name": "成语闯关",
-      "domain": "idiom.hanruize.com",
-      "legacyDomain": "idiom.tantu.ai",
-      "type": "learning",
-      "brief": "成语释义选择、补全、接龙与错题巩固。"
+      "slug": "force-motion",
+      "name": "力与运动模拟器",
+      "domain": "force.hanruize.com",
+      "legacyDomain": "force.tantu.ai",
+      "type": "physics",
+      "brief": "通过小车、摩擦力、速度-时间图像，直观看懂力、加速度与运动状态变化。"
     },
     {
       "index": 4,
-      "slug": "poem-recite",
-      "name": "古诗背诵卡",
-      "domain": "poem.hanruize.com",
-      "legacyDomain": "poem.tantu.ai",
-      "type": "learning",
-      "brief": "中小学必背古诗词遮字背诵、默写与作者朝代记忆。"
+      "slug": "electric-circuit",
+      "name": "电路搭建练习",
+      "domain": "circuit.hanruize.com",
+      "legacyDomain": "circuit.tantu.ai",
+      "type": "physics",
+      "brief": "串联/并联电路拖拽搭建，观察电流、电压、电阻关系，练习欧姆定律。"
     },
     {
       "index": 5,
-      "slug": "unit-converter",
-      "name": "单位换算练习",
-      "domain": "unit.hanruize.com",
-      "legacyDomain": "unit.tantu.ai",
-      "type": "tool",
-      "brief": "长度、面积、体积、质量、时间单位换算与练习题。"
+      "slug": "optics-mirror",
+      "name": "光学成像小课堂",
+      "domain": "optics.hanruize.com",
+      "legacyDomain": "optics.tantu.ai",
+      "type": "physics",
+      "brief": "凸透镜、平面镜、光的反射与折射可视化，帮助理解成像规律。"
     },
     {
       "index": 6,
-      "slug": "periodic-table",
-      "name": "元素周期表速查",
-      "domain": "element.hanruize.com",
-      "legacyDomain": "element.tantu.ai",
-      "type": "science",
-      "brief": "初中化学元素周期表、符号、原子序数与记忆测验。"
+      "slug": "emotion-diary",
+      "name": "情绪日记",
+      "domain": "mood.hanruize.com",
+      "legacyDomain": "mood.tantu.ai",
+      "type": "psychology",
+      "brief": "记录每日心情、触发事件和自我安慰语，生成温和的情绪变化视图。"
     },
     {
       "index": 7,
-      "slug": "physics-formula",
-      "name": "物理公式卡片",
-      "domain": "physics.hanruize.com",
-      "legacyDomain": "physics.tantu.ai",
-      "type": "science",
-      "brief": "速度、密度、压强、电学等初中公式速查与套公式练习。"
+      "slug": "focus-breathing",
+      "name": "专注呼吸训练",
+      "domain": "breath.hanruize.com",
+      "legacyDomain": "breath.tantu.ai",
+      "type": "psychology",
+      "brief": "适合学生课前/睡前使用的呼吸节奏、放松引导和专注计时小工具。"
     },
     {
       "index": 8,
-      "slug": "geo-map-quiz",
-      "name": "地理地图问答",
-      "domain": "geo.hanruize.com",
-      "legacyDomain": "geo.tantu.ai",
-      "type": "learning",
-      "brief": "中国省份、河流、山脉、气候区等地图知识问答。"
+      "slug": "stress-meter",
+      "name": "压力小测与调节",
+      "domain": "stress.hanruize.com",
+      "legacyDomain": "stress.tantu.ai",
+      "type": "psychology",
+      "brief": "轻量压力自评、压力来源归类与可执行的放松建议，不替代专业诊断。"
     },
     {
       "index": 9,
@@ -297,5 +297,11 @@
       "type": "portal",
       "brief": "将主页升级成作品画廊，支持分类、搜索、状态展示。"
     }
-  ]
+  ],
+  "weeklyFocus": {
+    "fromIndex": 2,
+    "toIndex": 8,
+    "theme": "未来一周以物理、心理主题为主",
+    "note": "爷于 2026-05-23 指定；保留第1个已完成应用，其后7天调整为4个物理 + 3个心理方向。"
+  }
 }
