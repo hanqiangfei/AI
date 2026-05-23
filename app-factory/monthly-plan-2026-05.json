@@ -21,11 +21,12 @@
     "nextIndex": 3,
     "completed": [
       1,
-      2
+      2,
+      13
     ],
     "failed": [],
-    "lastRunAt": "2026-05-23T04:10:22Z",
-    "lastResult": "success: deployed physics-buoyancy to https://buoyancy.hanruize.com; homepage updated; HTTPS/MIME/signature smoke tests passed."
+    "lastRunAt": "2026-05-23T04:31:30Z",
+    "lastResult": "success: deployed maze-runner to https://maze.hanruize.com; homepage updated; HTTPS/MIME smoke tests passed. nextIndex remains 3 for sequential daily plan."
   },
   "apps": [
     {
@@ -139,11 +140,11 @@
     {
       "index": 13,
       "slug": "maze-runner",
-      "name": "迷宫挑战",
+      "name": "霓虹迷宫大冒险",
       "domain": "maze.hanruize.com",
       "legacyDomain": "maze.tantu.ai",
       "type": "game",
-      "brief": "随机迷宫生成、键盘/触屏控制、计时挑战。"
+      "brief": "炫酷随机迷宫，钥匙、宝石、传送门和陷阱挑战，支持键盘与手机按钮。"
     },
     {
       "index": 14,
