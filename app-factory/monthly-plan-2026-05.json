@@ -26,8 +26,8 @@
       31
     ],
     "failed": [],
-    "lastRunAt": "2026-05-23T11:24:00Z",
-    "lastResult": "in_progress: developed idiom-chain for https://idiom.hanruize.com; deployment/smoke test pending."
+    "lastRunAt": "2026-05-23T11:31:30Z",
+    "lastResult": "success: deployed idiom-chain to https://idiom.hanruize.com; homepage updated; HTTPS/MIME smoke tests passed; nginx proxy configured on port 18086."
   },
   "apps": [
     {
