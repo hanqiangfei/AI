@@ -13,7 +13,7 @@
     <section class="hero">
       <p class="eyebrow">Neon Maze Quest</p>
       <h1>霓虹迷宫大冒险</h1>
-      <p class="intro">找到钥匙、收集能量宝石、躲开红色陷阱，冲进出口！键盘方向键 / WASD / 手机按钮都能玩。</p>
+      <p class="intro">操控霓虹机器人找到钥匙、收集能量宝石、躲开红色陷阱，冲进出口！键盘方向键 / WASD / 贴近迷宫的手机按钮都能玩。</p>
     </section>
 
     <section class="hud panel">
@@ -28,6 +28,12 @@
       <section class="panel board-wrap">
         <canvas id="board" width="720" height="720" aria-label="霓虹迷宫游戏画面"></canvas>
         <div class="status" id="status">先拿钥匙，再去发光出口。小心红色陷阱！</div>
+        <div class="play-controls" aria-label="贴近迷宫的手机方向控制">
+          <button id="up" type="button">▲</button>
+          <button id="left" type="button">◀</button>
+          <button id="down" type="button">▼</button>
+          <button id="right" type="button">▶</button>
+        </div>
       </section>
 
       <section class="panel side">
@@ -42,13 +48,6 @@
           <span>当前得分</span>
           <b id="score">0</b>
         </div>
-        <div class="controls" aria-label="手机方向控制">
-          <button id="up" type="button">▲</button>
-          <button id="left" type="button">◀</button>
-          <button id="down" type="button">▼</button>
-          <button id="right" type="button">▶</button>
-        </div>
-        <button id="hintBtn" class="ghost" type="button">点亮路线 3 秒</button>
       </section>
     </section>
 
