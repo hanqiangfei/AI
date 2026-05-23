@@ -18,13 +18,14 @@
     "signatureRule": "底部署名使用当天日期，例如：寒雨佳泽 3620007@QQ.com 2026年5月23日"
   },
   "state": {
-    "nextIndex": 2,
+    "nextIndex": 3,
     "completed": [
-      1
+      1,
+      2
     ],
     "failed": [],
-    "lastRunAt": "2026-05-22T18:05:30Z",
-    "lastResult": "success: deployed math-quick to https://math.hanruize.com; homepage updated; HTTPS/MIME/signature smoke tests passed."
+    "lastRunAt": "2026-05-23T04:05:00Z",
+    "lastResult": "success: built physics-buoyancy; pending Coolify deployment smoke test."
   },
   "apps": [
     {
@@ -38,12 +39,12 @@
     },
     {
       "index": 2,
-      "slug": "physics-lab",
-      "name": "物理实验室",
-      "domain": "physicslab.hanruize.com",
-      "legacyDomain": "physicslab.tantu.ai",
+      "slug": "physics-buoyancy",
+      "name": "浮力闯关小游戏",
+      "domain": "buoyancy.hanruize.com",
+      "legacyDomain": "buoyancy.tantu.ai",
       "type": "physics",
-      "brief": "用弹簧、杠杆、斜面、浮力等交互实验理解初中物理概念，支持参数调节与观察记录。"
+      "brief": "调节物体材料、液体密度、体积和空心程度，观察漂浮/悬浮/下沉并理解阿基米德浮力原理。"
     },
     {
       "index": 3,
