@@ -22,11 +22,12 @@
     "completed": [
       1,
       2,
-      13
+      13,
+      31
     ],
     "failed": [],
-    "lastRunAt": "2026-05-23T04:31:30Z",
-    "lastResult": "success: deployed maze-runner to https://maze.hanruize.com; homepage updated; HTTPS/MIME smoke tests passed. nextIndex remains 3 for sequential daily plan."
+    "lastRunAt": "2026-05-23T11:24:00Z",
+    "lastResult": "in_progress: developed idiom-chain for https://idiom.hanruize.com; deployment/smoke test pending."
   },
   "apps": [
     {
@@ -298,6 +299,15 @@
       "legacyDomain": "gallery.tantu.ai",
       "type": "portal",
       "brief": "将主页升级成作品画廊，支持分类、搜索、状态展示。"
+    },
+    {
+      "index": 31,
+      "slug": "idiom-chain",
+      "name": "成语接龙练习器",
+      "domain": "idiom.hanruize.com",
+      "legacyDomain": "idiom.tantu.ai",
+      "type": "learning",
+      "brief": "60 秒限时成语接龙，内置成语库、提示、计分和接龙记录，适合中文积累训练。"
     }
   ],
   "weeklyFocus": {
