@@ -23,8 +23,14 @@
 
       <div class="balance-wrap" id="balanceWrap" aria-label="天平实验区域">
         <div class="height-ruler"><span>支点高于重心</span><span>重心高于支点</span></div>
+        <div class="physics-overlay" aria-hidden="true">
+          <div class="gravity-center" id="gravityCenter">G<br><span>系统重心</span></div>
+          <div class="distance-line" id="distanceLine"><span id="dLabel">d</span></div>
+          <div class="angle-guide" id="angleGuide"><span id="thetaLabel">θ</span></div>
+          <div class="zero-line">水平参考线</div>
+        </div>
         <div class="center-assembly">
-          <div class="pivot-point" id="pivotPoint">支点</div>
+          <div class="pivot-point" id="pivotPoint">O<br><span>支点</span></div>
           <div class="pivot-connector" id="pivotConnector"></div>
           <div class="pivot-body"></div>
         </div>
@@ -52,14 +58,15 @@
         </div>
       </div>
 
-      <p class="result" id="resultText">提示：质量相等只是第一步，支点太高或太低会影响稳定性。</p>
+      <p class="result" id="resultText">提示：图中 O 为支点，G 为系统重心，d 是 O 到 G 的竖直距离，θ 是横梁相对水平线的扰动角。</p>
     </section>
 
     <section class="learn-card">
       <h2>怎么玩？</h2>
       <ul>
         <li>左右各一个物品，质量相同，所以左右关于支点的重力力矩互相抵消。</li>
-        <li>真正要验证的是：支点相对系统重心/挂盘点的高度 d。</li>
+        <li>图中 O 是支点，G 是系统重心；d 是 O 到 G 的竖直距离，θ 是横梁与水平参考线的夹角。</li>
+        <li>真正要验证的是：支点 O 相对系统重心 G / 挂盘点的高度 d。</li>
         <li>d &gt; 0：支点高于重心，释放后产生恢复力矩，自动回正到水平。</li>
         <li>d = 0：支点与重心三点一线，任意角度力矩为 0，倾斜也能静止。</li>
         <li>d &lt; 0：重心高于支点，一碰就产生翻倒力矩，不稳定。</li>

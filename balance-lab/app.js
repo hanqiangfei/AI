@@ -7,7 +7,7 @@
   ];
   var state={index:0,d:35,theta:22,animating:false};
   var el=function(id){return document.getElementById(id)};
-  var beam=el('beam'), pivot=el('pivotPoint'), connector=el('pivotConnector');
+  var beam=el('beam'), pivot=el('pivotPoint'), connector=el('pivotConnector'), gPoint=el('gravityCenter'), dLine=el('distanceLine'), dLabel=el('dLabel'), angleGuide=el('angleGuide'), thetaLabel=el('thetaLabel');
   var hSlider=el('heightSlider'), aSlider=el('angleSlider');
   function mass(item){return item[1]}
   function renderItem(node,item){node.innerHTML='';var d=document.createElement('span');d.className='item single';d.textContent=item[0];var s=document.createElement('small');s.textContent=item[1]+'kg';d.appendChild(s);node.appendChild(d)}
@@ -33,11 +33,18 @@
     connector.style.transform='translateY('+pivotY+'px)';
     connector.style.height=Math.abs(state.d)+'px';
     connector.style.top=(state.d>=0?'50%':'calc(50% - '+Math.abs(state.d)+'px)');
+    gPoint.style.transform='translate(-50%, -50%) rotate('+state.theta+'deg)';
+    dLine.style.height=Math.abs(state.d)+'px';
+    dLine.style.top=(state.d>=0?'calc(50% - '+Math.abs(state.d)+'px)':'50%');
+    dLine.className='distance-line '+(state.d>=0?'positive':'negative');
+    dLabel.textContent='d = '+state.d+'（O→G）';
+    angleGuide.style.transform='rotate('+state.theta+'deg)';
+    thetaLabel.textContent='θ = '+Math.round(state.theta)+'°';
     beam.style.transform='rotate('+state.theta+'deg)';
     el('massTorque').textContent='左右相等，净力矩 0';
     el('restoreTorque').textContent=torque().toFixed(2);
     el('angleText').textContent=Math.round(state.theta)+'°';
-    el('resultText').innerHTML='当前：<strong>'+info.grade+'</strong>。'+info.msg+' 公式：τ=-M·g·d·sinθ。';
+    el('resultText').innerHTML='当前：<strong>'+info.grade+'</strong>。图中 O=支点，G=系统重心，d=O 到 G 的竖直距离，θ=横梁相对水平线的扰动角。'+info.msg+' 公式：τ=-M·g·d·sinθ。';
   }
   function animateRelease(){
     if(state.animating)return;
