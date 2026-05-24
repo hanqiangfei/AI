@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#15254a">
+  <title>力与运动模拟器</title>
+  <link rel="stylesheet" href="/style.css?v=20260524">
+  <script defer src="/app.js?v=20260524"></script>
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <p class="tag">Physics Lab · F = ma</p>
+      <h1>力与运动模拟器</h1>
+      <p>推一推小车，调节质量、推力和摩擦力，观察速度-时间图像，直观看懂力、加速度与运动状态变化。</p>
+    </section>
+
+    <section class="lab">
+      <div class="scene" aria-label="小车运动场景">
+        <div class="track"><div id="cart" class="cart"><span>🚙</span></div></div>
+        <div class="force-arrow" id="arrow">推力</div>
+        <canvas id="chart" width="620" height="210" aria-label="速度时间图像"></canvas>
+      </div>
+
+      <div class="panel">
+        <label>推力 F：<b id="forceVal">20</b> N<input id="force" type="range" min="-40" max="80" value="20"></label>
+        <label>质量 m：<b id="massVal">5</b> kg<input id="mass" type="range" min="1" max="20" value="5"></label>
+        <label>摩擦力 f：<b id="frictionVal">5</b> N<input id="friction" type="range" min="0" max="30" value="5"></label>
+        <div class="stats">
+          <div><span>合力</span><strong id="net">15 N</strong></div>
+          <div><span>加速度</span><strong id="acc">3.0 m/s²</strong></div>
+          <div><span>速度</span><strong id="vel">0.0 m/s</strong></div>
+          <div><span>路程</span><strong id="dist">0.0 m</strong></div>
+        </div>
+        <div class="actions">
+          <button id="start">开始</button><button id="pause">暂停</button><button id="reset">重置</button><button id="kick">轻推一下</button>
+        </div>
+        <p class="tip" id="tip">提示：合力 = 推力 - 阻碍运动方向的摩擦力；速度图线越陡，加速度越大。</p>
+      </div>
+    </section>
+
+    <section class="quiz">
+      <h2>小挑战</h2>
+      <p id="question">如果质量变大、合力不变，加速度会怎样？</p>
+      <div><button data-answer="wrong">变大</button><button data-answer="right">变小</button><button data-answer="wrong">不变</button></div>
+      <p id="quizResult"></p>
+    </section>
+    <footer>寒雨佳泽 3620007@QQ.com 2026年5月24日</footer>
+  </main>
+</body>
+</html>
