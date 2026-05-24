@@ -2,38 +2,33 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#12213f">
   <title>天平平衡实验室</title>
-  <link rel="stylesheet" href="/style.css?v=1">
+  <link rel="stylesheet" href="/style.css?v=4">
 </head>
 <body>
   <main class="app">
     <section class="hero">
-      <p class="eyebrow">Physics Balance Lab</p>
-      <h1>天平平衡实验室</h1>
-      <p class="subtitle">两侧质量相等时，验证真正决定稳定性的不是“谁更重”，而是支点相对系统重心/挂盘点的位置。</p>
+      <div>
+        <p class="eyebrow">Physics Balance Lab</p>
+        <h1>天平平衡实验室</h1>
+      </div>
+      <p class="subtitle">等质量两侧只保证左右力矩抵消；是否自动回正，取决于支点 O 与系统重心 G 的相对高度。</p>
     </section>
 
     <section class="stage-card">
-      <div class="scorebar">
-        <div><strong id="levelName">基础挑战</strong><span id="targetText">左右各 5kg</span></div>
-        <button id="nextBtn" type="button">换一组物品</button>
+      <div class="topbar">
+        <div><strong id="levelName">苹果 vs 砝码</strong><span id="targetText">左右各 5kg</span></div>
+        <button id="nextBtn" type="button">换物品</button>
       </div>
 
       <div class="balance-wrap" id="balanceWrap" aria-label="天平实验区域">
-        <div class="height-ruler"><span>支点高于重心</span><span>重心高于支点</span></div>
-        <div class="physics-overlay" aria-hidden="true">
-          <div class="gravity-center" id="gravityCenter">G<br><span>系统重心</span></div>
-          <div class="distance-line" id="distanceLine"><span id="dLabel">d</span></div>
-          <div class="angle-guide" id="angleGuide"><span id="thetaLabel">θ</span></div>
-          <div class="zero-line">水平参考线</div>
-        </div>
-        <div class="center-assembly">
-          <div class="pivot-point" id="pivotPoint">O<br><span>支点</span></div>
-          <div class="pivot-connector" id="pivotConnector"></div>
-          <div class="pivot-body"></div>
-        </div>
+        <div class="zero-line">水平参考线</div>
+        <div class="distance-line" id="distanceLine"><span id="dLabel">d</span></div>
+        <div class="angle-guide" id="angleGuide"><span id="thetaLabel">θ</span></div>
+        <div class="gravity-center" id="gravityCenter">G<span>系统重心</span></div>
+        <div class="pivot-point" id="pivotPoint">O<span>支点</span></div>
         <div class="beam" id="beam">
           <div class="pan left-pan" id="leftPan"></div>
           <div class="pan right-pan" id="rightPan"></div>
@@ -41,41 +36,36 @@
       </div>
 
       <div class="readout">
-        <div><span>左右重力力矩</span><strong id="massTorque">抵消</strong></div>
-        <div><span>稳定力矩 τ</span><strong id="restoreTorque">0</strong></div>
-        <div><span>当前角度 θ</span><strong id="angleText">0°</strong></div>
+        <div><span>系统重心 G</span><strong id="cgText">计算中</strong></div>
+        <div><span>d = Gᵧ - Oᵧ</span><strong id="dText">0</strong></div>
+        <div><span>τ=-Mgd·sinθ</span><strong id="restoreTorque">0</strong></div>
       </div>
 
       <div class="controls">
-        <label for="heightSlider">支点相对系统重心/挂盘点的高度 d</label>
-        <input id="heightSlider" type="range" min="-80" max="80" value="35">
-        <label for="angleSlider" class="angle-label">给天平一个初始扰动角度 θ</label>
+        <label>支点 O 上下位置：<b id="pivotText">0</b></label>
+        <input id="pivotSlider" type="range" min="-80" max="80" value="30">
+        <label>物品/挂盘上下位置：<b id="objectText">0</b></label>
+        <input id="objectSlider" type="range" min="-50" max="90" value="42">
+        <label>扰动角 θ：<b id="angleText">0°</b></label>
         <input id="angleSlider" type="range" min="-55" max="55" value="22">
         <div class="buttons">
-          <button id="upBtn" type="button">支点上移 ▲</button>
-          <button id="downBtn" type="button">支点下移 ▼</button>
-          <button id="testBtn" type="button">释放并观察</button>
+          <button id="stableBtn" type="button">稳定例子</button>
+          <button id="neutralBtn" type="button">随遇例子</button>
+          <button id="unstableBtn" type="button">不稳定例子</button>
+          <button id="testBtn" type="button">释放</button>
         </div>
       </div>
 
-      <p class="result" id="resultText">提示：图中 O 为支点，G 为系统重心，d 是 O 到 G 的竖直距离，θ 是横梁相对水平线的扰动角。</p>
+      <p class="result" id="resultText">O 为支点，G 为系统重心；d&gt;0 稳定，d=0 随遇，d&lt;0 不稳定。</p>
     </section>
 
     <section class="learn-card">
-      <h2>怎么玩？</h2>
-      <ul>
-        <li>左右各一个物品，质量相同，所以左右关于支点的重力力矩互相抵消。</li>
-        <li>图中 O 是支点，G 是系统重心；d 是 O 到 G 的竖直距离，θ 是横梁与水平参考线的夹角。</li>
-        <li>真正要验证的是：支点 O 相对系统重心 G / 挂盘点的高度 d。</li>
-        <li>d &gt; 0：支点高于重心，释放后产生恢复力矩，自动回正到水平。</li>
-        <li>d = 0：支点与重心三点一线，任意角度力矩为 0，倾斜也能静止。</li>
-        <li>d &lt; 0：重心高于支点，一碰就产生翻倒力矩，不稳定。</li>
-      </ul>
-      <p>核心公式：τ = -M·g·d·sinθ。这里 d 表示“支点高于系统重心”的距离；d 为正时 τ 与倾斜方向相反，是恢复力矩；d 为 0 时 τ 恒为 0；d 为负时 τ 会推着天平继续翻倒。</p>
+      <h2>重心怎么算？</h2>
+      <p>本实验用对称等质量物品，左右 x 方向互相抵消，只计算竖直方向：<br><b>Gᵧ = (m梁·0 + m左·y物 + m右·y物) / (m梁+m左+m右)</b>。移动物品/挂盘上下位置会改变 G；移动支点会改变 O；<b>d = Gᵧ - Oᵧ</b>，屏幕向下为正，所以 d&gt;0 表示支点高于重心。</p>
     </section>
 
     <footer>寒雨佳泽 3620007@QQ.com 2026年5月24日</footer>
   </main>
-  <script defer src="/app.js?v=1"></script>
+  <script defer src="/app.js?v=4"></script>
 </body>
 </html>
