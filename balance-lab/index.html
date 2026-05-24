@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#12213f">
+  <title>天平平衡实验室</title>
+  <link rel="stylesheet" href="/style.css?v=1">
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <p class="eyebrow">Physics Balance Lab</p>
+      <h1>天平平衡实验室</h1>
+      <p class="subtitle">两边质量相等时，试着上下移动支点，观察天平是否仍然稳定平衡。</p>
+    </section>
+
+    <section class="stage-card">
+      <div class="scorebar">
+        <div><strong id="levelName">基础挑战</strong><span id="targetText">左右各 6kg</span></div>
+        <button id="nextBtn" type="button">换一组物品</button>
+      </div>
+
+      <div class="balance-wrap" id="balanceWrap" aria-label="天平实验区域">
+        <div class="height-ruler"><span>支点高</span><span>支点低</span></div>
+        <div class="fulcrum" id="fulcrum">
+          <div class="pivot-head"></div>
+          <div class="pivot-body"></div>
+        </div>
+        <div class="beam" id="beam">
+          <div class="pan left-pan" id="leftPan"></div>
+          <div class="pan right-pan" id="rightPan"></div>
+        </div>
+      </div>
+
+      <div class="readout">
+        <div><span>左侧力矩</span><strong id="leftTorque">0</strong></div>
+        <div><span>右侧力矩</span><strong id="rightTorque">0</strong></div>
+        <div><span>倾斜角度</span><strong id="angleText">0°</strong></div>
+      </div>
+
+      <div class="controls">
+        <label for="heightSlider">移动天平中心点上下位置</label>
+        <input id="heightSlider" type="range" min="-80" max="80" value="0">
+        <div class="buttons">
+          <button id="upBtn" type="button">支点上移 ▲</button>
+          <button id="downBtn" type="button">支点下移 ▼</button>
+          <button id="testBtn" type="button">测试平衡性</button>
+        </div>
+      </div>
+
+      <p class="result" id="resultText">提示：质量相等只是第一步，支点太高或太低会影响稳定性。</p>
+    </section>
+
+    <section class="learn-card">
+      <h2>怎么玩？</h2>
+      <ul>
+        <li>左右托盘里的物品总质量相等。</li>
+        <li>拖动滑杆，让中心支点上移或下移。</li>
+        <li>点击“测试平衡性”，看天平是稳定平衡、临界平衡，还是容易翻倒。</li>
+      </ul>
+      <p>物理小知识：左右力矩相等时可以水平；支点相对重心的位置会影响“稳不稳”。支点越在重心上方，越像吊起来的秋千，越稳定。</p>
+    </section>
+
+    <footer>寒雨佳泽 3620007@QQ.com 2026年5月24日</footer>
+  </main>
+  <script defer src="/app.js?v=1"></script>
+</body>
+</html>
