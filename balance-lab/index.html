@@ -12,7 +12,7 @@
     <section class="hero">
       <p class="eyebrow">Physics Balance Lab</p>
       <h1>天平平衡实验室</h1>
-      <p class="subtitle">两边各一个等质量物品，支点始终连接在横梁中心；上下移动中心高度，观察平衡稳定性。</p>
+      <p class="subtitle">两侧质量相等时，验证真正决定稳定性的不是“谁更重”，而是支点相对系统重心/挂盘点的位置。</p>
     </section>
 
     <section class="stage-card">
@@ -22,9 +22,10 @@
       </div>
 
       <div class="balance-wrap" id="balanceWrap" aria-label="天平实验区域">
-        <div class="height-ruler"><span>支点高</span><span>支点低</span></div>
-        <div class="fulcrum" id="fulcrum">
-          <div class="pivot-head"></div>
+        <div class="height-ruler"><span>支点高于重心</span><span>重心高于支点</span></div>
+        <div class="center-assembly">
+          <div class="pivot-point" id="pivotPoint">支点</div>
+          <div class="pivot-connector" id="pivotConnector"></div>
           <div class="pivot-body"></div>
         </div>
         <div class="beam" id="beam">
@@ -34,18 +35,20 @@
       </div>
 
       <div class="readout">
-        <div><span>左侧力矩</span><strong id="leftTorque">0</strong></div>
-        <div><span>右侧力矩</span><strong id="rightTorque">0</strong></div>
-        <div><span>倾斜角度</span><strong id="angleText">0°</strong></div>
+        <div><span>左右重力力矩</span><strong id="massTorque">抵消</strong></div>
+        <div><span>稳定力矩 τ</span><strong id="restoreTorque">0</strong></div>
+        <div><span>当前角度 θ</span><strong id="angleText">0°</strong></div>
       </div>
 
       <div class="controls">
-        <label for="heightSlider">移动天平中心点上下位置</label>
-        <input id="heightSlider" type="range" min="-80" max="80" value="0">
+        <label for="heightSlider">支点相对系统重心/挂盘点的高度 d</label>
+        <input id="heightSlider" type="range" min="-80" max="80" value="35">
+        <label for="angleSlider" class="angle-label">给天平一个初始扰动角度 θ</label>
+        <input id="angleSlider" type="range" min="-55" max="55" value="22">
         <div class="buttons">
           <button id="upBtn" type="button">支点上移 ▲</button>
           <button id="downBtn" type="button">支点下移 ▼</button>
-          <button id="testBtn" type="button">测试平衡性</button>
+          <button id="testBtn" type="button">释放并观察</button>
         </div>
       </div>
 
@@ -55,11 +58,13 @@
     <section class="learn-card">
       <h2>怎么玩？</h2>
       <ul>
-        <li>左右托盘各放一个物品，两个物品质量相同。</li>
-        <li>拖动滑杆，让天平中心支点带着横梁一起上移或下移，支点不会离开横梁。</li>
-        <li>点击“测试平衡性”，看天平是稳定平衡、临界平衡，还是容易翻倒。</li>
+        <li>左右各一个物品，质量相同，所以左右关于支点的重力力矩互相抵消。</li>
+        <li>真正要验证的是：支点相对系统重心/挂盘点的高度 d。</li>
+        <li>d &gt; 0：支点高于重心，释放后产生恢复力矩，自动回正到水平。</li>
+        <li>d = 0：支点与重心三点一线，任意角度力矩为 0，倾斜也能静止。</li>
+        <li>d &lt; 0：重心高于支点，一碰就产生翻倒力矩，不稳定。</li>
       </ul>
-      <p>物理小知识：左右力矩相等时可以水平；支点相对重心的位置会影响“稳不稳”。支点越在重心上方，越像吊起来的秋千，越稳定。</p>
+      <p>核心公式：τ = -M·g·d·sinθ。这里 d 表示“支点高于系统重心”的距离；d 为正时 τ 与倾斜方向相反，是恢复力矩；d 为 0 时 τ 恒为 0；d 为负时 τ 会推着天平继续翻倒。</p>
     </section>
 
     <footer>寒雨佳泽 3620007@QQ.com 2026年5月24日</footer>

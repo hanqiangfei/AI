@@ -5,21 +5,67 @@
     {name:'电池 vs 磁铁', left:['🔋',3], right:['🧲',3]},
     {name:'星球 vs 卫星', left:['🪐',6], right:['🛰️',6]}
   ];
-  var state={index:0,height:0,tested:false};
+  var state={index:0,d:35,theta:22,animating:false};
   var el=function(id){return document.getElementById(id)};
-  var wrap=el('balanceWrap'), beam=el('beam'), fulcrum=el('fulcrum'), slider=el('heightSlider');
+  var beam=el('beam'), pivot=el('pivotPoint'), connector=el('pivotConnector');
+  var hSlider=el('heightSlider'), aSlider=el('angleSlider');
   function mass(item){return item[1]}
   function renderItem(node,item){node.innerHTML='';var d=document.createElement('span');d.className='item single';d.textContent=item[0];var s=document.createElement('small');s.textContent=item[1]+'kg';d.appendChild(s);node.appendChild(d)}
-  function stability(){var h=state.height; if(h<-45)return {grade:'不稳定',msg:'支点太低，重心像站在支点上方，轻微扰动就容易翻倒。',angle:7}; if(h<15)return {grade:'临界平衡',msg:'能保持水平，但抗扰动能力一般，轻碰一下会晃很久。',angle:2}; return {grade:'稳定平衡',msg:'支点在重心上方，像吊起来的秋千，会自己回到平衡位置。',angle:0};}
-  function update(){var set=sets[state.index], left=mass(set.left), right=mass(set.right), st=stability(); el('levelName').textContent=set.name; el('targetText').textContent='左右各 '+left+'kg'; renderItem(el('leftPan'),set.left); renderItem(el('rightPan'),set.right); var y=-state.height; fulcrum.style.transform='translateY('+y+'px)'; var wiggle=state.tested?st.angle:0; beam.style.transform='translateY('+y+'px) rotate('+wiggle+'deg)'; el('leftTorque').textContent=left+' × L'; el('rightTorque').textContent=right+' × L'; el('angleText').textContent=wiggle+'°'; if(state.tested){el('resultText').innerHTML='测试结果：<strong>'+st.grade+'</strong>。'+st.msg}else{el('resultText').textContent='提示：左右各一个等质量物品，支点始终连在横梁中心；现在移动中心高度，测试“稳不稳”。'}}
-  slider.oninput=function(){state.height=parseInt(slider.value,10)||0;state.tested=false;update()};
-  el('upBtn').onclick=function(){state.height=Math.min(80,state.height+10);slider.value=state.height;state.tested=false;update()};
-  el('downBtn').onclick=function(){state.height=Math.max(-80,state.height-10);slider.value=state.height;state.tested=false;update()};
-  el('testBtn').onclick=function(){state.tested=true;update()};
-  el('nextBtn').onclick=function(){state.index=(state.index+1)%sets.length;state.tested=false;update()};
-  var dragging=false,startY=0,startH=0;
-  wrap.addEventListener('pointerdown',function(e){dragging=true;startY=e.clientY;startH=state.height;wrap.setPointerCapture(e.pointerId)});
-  wrap.addEventListener('pointermove',function(e){if(!dragging)return;state.height=Math.max(-80,Math.min(80,startH-(e.clientY-startY)));slider.value=state.height;state.tested=false;update()});
-  wrap.addEventListener('pointerup',function(){dragging=false});
+  function clamp(v,min,max){return Math.max(min,Math.min(max,v))}
+  function mode(){ if(state.d>6)return 'stable'; if(state.d<-6)return 'unstable'; return 'neutral'; }
+  function torque(){
+    var total=mass(sets[state.index].left)+mass(sets[state.index].right);
+    return -total*state.d*Math.sin(state.theta*Math.PI/180)/100;
+  }
+  function modeText(){
+    var m=mode();
+    if(m==='stable')return {grade:'稳定平衡',msg:'d > 0，支点高于系统重心/挂盘点。倾斜后 τ 与 θ 方向相反，会把横梁拉回水平。'};
+    if(m==='neutral')return {grade:'随遇平衡',msg:'d ≈ 0，支点、重心、挂盘点近似三点一线。τ≈0，所以天平可在任意角度静止。'};
+    return {grade:'不稳定平衡',msg:'d < 0，重心高于支点。倾斜后 τ 与 θ 同向，一碰就会继续翻倒。'};
+  }
+  function update(){
+    var set=sets[state.index], left=mass(set.left), right=mass(set.right), info=modeText();
+    el('levelName').textContent=set.name;
+    el('targetText').textContent='左右各 '+left+'kg，质量相等';
+    renderItem(el('leftPan'),set.left); renderItem(el('rightPan'),set.right);
+    var pivotY=-state.d;
+    pivot.style.transform='translateY('+pivotY+'px)';
+    connector.style.transform='translateY('+pivotY+'px)';
+    connector.style.height=Math.abs(state.d)+'px';
+    connector.style.top=(state.d>=0?'50%':'calc(50% - '+Math.abs(state.d)+'px)');
+    beam.style.transform='rotate('+state.theta+'deg)';
+    el('massTorque').textContent='左右相等，净力矩 0';
+    el('restoreTorque').textContent=torque().toFixed(2);
+    el('angleText').textContent=Math.round(state.theta)+'°';
+    el('resultText').innerHTML='当前：<strong>'+info.grade+'</strong>。'+info.msg+' 公式：τ=-M·g·d·sinθ。';
+  }
+  function animateRelease(){
+    if(state.animating)return;
+    state.animating=true;
+    var m=mode(), step=0;
+    function tick(){
+      step++;
+      if(m==='stable'){
+        state.theta=state.theta*0.82;
+        if(Math.abs(state.theta)<0.4){state.theta=0;state.animating=false;update();return;}
+      }else if(m==='neutral'){
+        state.animating=false;update();return;
+      }else{
+        var dir=state.theta===0?1:(state.theta>0?1:-1);
+        state.theta=clamp(state.theta+dir*(3+step*0.38),-82,82);
+        if(Math.abs(state.theta)>=82){state.animating=false;update();return;}
+      }
+      aSlider.value=Math.round(state.theta);
+      update();
+      setTimeout(tick,70);
+    }
+    tick();
+  }
+  hSlider.oninput=function(){state.d=parseInt(hSlider.value,10)||0;update()};
+  aSlider.oninput=function(){state.theta=parseInt(aSlider.value,10)||0;update()};
+  el('upBtn').onclick=function(){state.d=clamp(state.d+10,-80,80);hSlider.value=state.d;update()};
+  el('downBtn').onclick=function(){state.d=clamp(state.d-10,-80,80);hSlider.value=state.d;update()};
+  el('testBtn').onclick=animateRelease;
+  el('nextBtn').onclick=function(){state.index=(state.index+1)%sets.length;update()};
   update();
 })();
