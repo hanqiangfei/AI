@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#1b2559">
+  <title>电路搭建练习</title>
+  <link rel="stylesheet" href="/style.css?v=20260525">
+  <script defer src="/app.js?v=20260525"></script>
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <p class="tag">Physics Lab · Ohm's Law</p>
+      <h1>电路搭建练习</h1>
+      <p>选择串联、并联或混合电路，调节电压和电阻，观察电流、电压分配、灯泡亮度，一起练习欧姆定律。</p>
+    </section>
+
+    <section class="board">
+      <div class="circuit" aria-label="电路图">
+        <svg id="diagram" viewBox="0 0 640 360" role="img" aria-label="交互式电路示意图">
+          <defs>
+            <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <rect class="paper" x="16" y="16" width="608" height="328" rx="28"></rect>
+          <g class="wire"><path id="wireMain" d="M100 180 H220 M420 180 H540 M100 180 V88 H540 V180 M100 180 V272 H540 V180"></path></g>
+          <g class="battery">
+            <line x1="82" y1="142" x2="82" y2="218"></line><line x1="104" y1="118" x2="104" y2="242"></line>
+            <text x="62" y="111">电源</text><text id="voltLabel" x="60" y="265">6V</text>
+          </g>
+          <g id="resA" class="res"><rect x="235" y="70" width="90" height="42" rx="12"></rect><text x="280" y="97">R1</text></g>
+          <g id="lampA" class="lamp"><circle cx="400" cy="91" r="30"></circle><path d="M382 109 L418 73 M382 73 L418 109"></path><text x="374" y="145">灯1</text></g>
+          <g id="resB" class="res"><rect x="235" y="248" width="90" height="42" rx="12"></rect><text x="280" y="275">R2</text></g>
+          <g id="lampB" class="lamp"><circle cx="400" cy="269" r="30"></circle><path d="M382 287 L418 251 M382 251 L418 287"></path><text x="374" y="323">灯2</text></g>
+          <g id="switchMark" class="switch"><line x1="214" y1="180" x2="276" y2="180"></line><circle cx="214" cy="180" r="7"></circle><circle cx="276" cy="180" r="7"></circle><text x="210" y="162">开关</text></g>
+          <circle id="electron" cx="100" cy="180" r="9"></circle>
+        </svg>
+        <div class="legend"><span>蓝线=导线</span><span>亮度越强=功率越大</span><span id="status">电路已闭合</span></div>
+      </div>
+
+      <div class="panel">
+        <label>电路类型
+          <select id="mode"><option value="series">串联</option><option value="parallel">并联</option><option value="mixed">混合：R1 与灯1串联，和 R2 并联</option></select>
+        </label>
+        <label>电源电压 U：<b id="uVal">6</b> V<input id="u" type="range" min="1" max="24" value="6"></label>
+        <label>R1 电阻：<b id="r1Val">6</b> Ω<input id="r1" type="range" min="1" max="30" value="6"></label>
+        <label>R2 电阻：<b id="r2Val">6</b> Ω<input id="r2" type="range" min="1" max="30" value="6"></label>
+        <label class="check"><input id="closed" type="checkbox" checked> 开关闭合</label>
+        <div class="actions"><button id="task">出一道题</button><button id="hint">显示公式</button><button id="reset">重置</button></div>
+        <div class="stats">
+          <div><span>总电阻</span><strong id="req">12 Ω</strong></div>
+          <div><span>总电流</span><strong id="itotal">0.50 A</strong></div>
+          <div><span>R1 电流/电压</span><strong id="r1info">0.50A / 3.0V</strong></div>
+          <div><span>R2 电流/电压</span><strong id="r2info">0.50A / 3.0V</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="challenge">
+      <h2>欧姆定律小挑战</h2>
+      <p id="question">点击“出一道题”，根据电路读数回答。</p>
+      <div class="answer"><input id="answer" inputmode="decimal" placeholder="输入数值"><button id="check">检查答案</button></div>
+      <p id="feedback">公式：U = I × R，I = U ÷ R。</p>
+    </section>
+    <footer>寒雨佳泽 3620007@QQ.com 2026年5月25日</footer>
+  </main>
+</body>
+</html>
