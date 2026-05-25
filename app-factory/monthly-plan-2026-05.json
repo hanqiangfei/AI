@@ -15,20 +15,23 @@
     "primaryDomainSuffix": "hanruize.com",
     "legacyDomainSuffix": "tantu.ai",
     "signature": "寒雨佳泽 3620007@QQ.com 【日期】",
-    "signatureRule": "底部署名使用当天日期，例如：寒雨佳泽 3620007@QQ.com 2026年5月23日"
+    "signatureRule": "底部署名使用当天日期，例如：寒雨佳泽 3620007@QQ.com 2026年5月23日",
+    "autoPublish": true,
+    "autoPublishRule": "以后默认自动发布：开发完成后直接推送 GitHub、Coolify/Nginx 发布、更新作品主页并做线上 smoke test；只有遇到密钥/域名/权限等真实阻塞时才汇报阻塞。"
   },
   "state": {
-    "nextIndex": 4,
+    "nextIndex": 5,
     "completed": [
       1,
       2,
       3,
+      4,
       13,
       31
     ],
     "failed": [],
-    "lastRunAt": "2026-05-24T18:06:00Z",
-    "lastResult": "success: deployed force-motion to https://force.hanruize.com; Coolify app j12i5a18w0lbuvt9luprq90d on port 18090; homepage updated; HTTPS/MIME/interaction smoke tests passed; nginx proxy configured for hanruize and legacy domain."
+    "lastRunAt": "2026-05-25T18:05:00Z",
+    "lastResult": "success: deployed electric-circuit to https://circuit.hanruize.com and https://circuit.tantu.ai; Git commit 0b3e609; Coolify app mzpmbs35u3luqlho938pw2ku deployment finished; Nginx proxy configured on port 18091; homepage updated; HTTPS/MIME/interaction smoke tests passed."
   },
   "apps": [
     {
