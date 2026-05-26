@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#172554">
+  <title>光学成像小课堂</title>
+  <link rel="stylesheet" href="/style.css?v=20260526">
+  <script defer src="/app.js?v=20260526"></script>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">Physics · Optics Lab</p>
+      <h1>光学成像小课堂</h1>
+      <p>拖动蜡烛与透镜参数，观察凸透镜成像；也能切换到平面镜和折射小实验。</p>
+    </section>
+
+    <section class="panel controls" aria-label="实验控制台">
+      <label>实验模式
+        <select id="mode">
+          <option value="lens">凸透镜成像</option>
+          <option value="mirror">平面镜成像</option>
+          <option value="refraction">光的折射</option>
+        </select>
+      </label>
+      <label id="objectWrap">物距 u：<strong id="objectValue">36</strong> cm
+        <input id="objectDistance" type="range" min="12" max="90" value="36">
+      </label>
+      <label id="focusWrap">焦距 f：<strong id="focusValue">18</strong> cm
+        <input id="focusLength" type="range" min="8" max="30" value="18">
+      </label>
+      <label id="angleWrap" class="hidden">入射角：<strong id="angleValue">35</strong>°
+        <input id="angle" type="range" min="5" max="70" value="35">
+      </label>
+      <label id="mediumWrap" class="hidden">第二介质
+        <select id="medium">
+          <option value="1.33">水 n=1.33</option>
+          <option value="1.50">玻璃 n=1.50</option>
+          <option value="1.00">空气 n=1.00</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="lab">
+      <div class="panel canvas-card">
+        <canvas id="canvas" width="920" height="430" aria-label="光路图"></canvas>
+        <div class="legend">
+          <span><i class="red"></i>入射光线</span>
+          <span><i class="blue"></i>出射/反射光线</span>
+          <span><i class="green"></i>像的位置</span>
+        </div>
+      </div>
+      <aside class="panel result">
+        <h2 id="resultTitle">凸透镜成像结果</h2>
+        <p id="resultText">正在计算……</p>
+        <ul id="facts"></ul>
+      </aside>
+    </section>
+
+    <section class="panel challenge">
+      <h2>一分钟小挑战</h2>
+      <p id="question">物距大于 2 倍焦距时，凸透镜成什么像？</p>
+      <div class="answers">
+        <button data-answer="A">A. 倒立、缩小、实像</button>
+        <button data-answer="B">B. 正立、放大、虚像</button>
+        <button data-answer="C">C. 不成像</button>
+      </div>
+      <p id="feedback" class="feedback">选择一个答案试试。</p>
+    </section>
+
+    <footer class="signature">寒雨佳泽 3620007@QQ.com 2026年5月26日</footer>
+  </main>
+</body>
+</html>
