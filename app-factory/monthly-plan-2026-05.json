@@ -20,18 +20,19 @@
     "autoPublishRule": "以后默认自动发布：开发完成后直接推送 GitHub、Coolify/Nginx 发布、更新作品主页并做线上 smoke test；只有遇到密钥/域名/权限等真实阻塞时才汇报阻塞。"
   },
   "state": {
-    "nextIndex": 5,
+    "nextIndex": 6,
     "completed": [
       1,
       2,
       3,
       4,
+      5,
       13,
       31
     ],
     "failed": [],
-    "lastRunAt": "2026-05-25T18:05:00Z",
-    "lastResult": "success: deployed electric-circuit to https://circuit.hanruize.com and https://circuit.tantu.ai; Git commit 0b3e609; Coolify app mzpmbs35u3luqlho938pw2ku deployment finished; Nginx proxy configured on port 18091; homepage updated; HTTPS/MIME/interaction smoke tests passed."
+    "lastRunAt": "2026-05-26T18:07:00Z",
+    "lastResult": "success: deployed optics-mirror to https://optics.hanruize.com and https://optics.tantu.ai; Git commit 75fae78; Coolify app n11bru5r9dhx9g2s5vwbh9da deployment sag38686b42bkrerglacwx4s finished; Nginx proxy configured on port 18092; homepage updated and redeployed; HTTPS/MIME/interaction smoke tests passed."
   },
   "apps": [
     {
