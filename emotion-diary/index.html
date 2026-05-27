@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7c3aed">
+  <title>情绪日记</title>
+  <link rel="stylesheet" href="/style.css?v=20260527">
+  <script defer src="/app.js?v=20260527"></script>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <p class="eyebrow">Mood Diary · 给心情一个温柔出口</p>
+      <h1>情绪日记</h1>
+      <p class="sub">记录今天的心情、触发事件和自我安慰语，慢慢看见自己的情绪变化。</p>
+    </section>
+
+    <section class="panel form-panel" aria-label="记录今日心情">
+      <div class="mood-row" id="moodRow">
+        <button class="mood active" data-score="5" data-face="😄">😄<span>开心</span></button>
+        <button class="mood" data-score="4" data-face="🙂">🙂<span>平静</span></button>
+        <button class="mood" data-score="3" data-face="😐">😐<span>一般</span></button>
+        <button class="mood" data-score="2" data-face="😟">😟<span>担心</span></button>
+        <button class="mood" data-score="1" data-face="😢">😢<span>难过</span></button>
+      </div>
+      <label>今天发生了什么？<textarea id="eventText" maxlength="120" placeholder="例如：考试前有点紧张，但我完成了复习计划。"></textarea></label>
+      <label>给自己的安慰语<textarea id="comfortText" maxlength="120" placeholder="例如：我已经在努力了，一步一步来就好。"></textarea></label>
+      <div class="actions">
+        <button id="saveBtn" class="primary">保存今日心情</button>
+        <button id="clearBtn" class="ghost">清空本机记录</button>
+      </div>
+      <p class="hint">数据只保存在当前浏览器本机；若持续痛苦或影响生活，请及时告诉家人、老师或专业人士。</p>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <h2>7 日情绪小曲线</h2>
+        <canvas id="chart" width="640" height="260" aria-label="情绪变化图"></canvas>
+        <p id="summary" class="summary">还没有记录，先写下今天的一条心情吧。</p>
+      </article>
+      <article class="panel">
+        <h2>温柔调节卡</h2>
+        <div id="tipCard" class="tip-card">选择心情后，会给你一张适合今天的调节小卡片。</div>
+        <button id="newTipBtn" class="ghost full">换一条建议</button>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>最近记录</h2>
+      <div id="entries" class="entries"></div>
+    </section>
+
+    <footer class="signature">寒雨佳泽 3620007@QQ.com 2026年5月27日</footer>
+  </main>
+</body>
+</html>
