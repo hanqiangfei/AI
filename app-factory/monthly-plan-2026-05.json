@@ -20,7 +20,7 @@
     "autoPublishRule": "以后默认自动发布：开发完成后直接推送 GitHub、Coolify/Nginx 发布、更新作品主页并做线上 smoke test；只有遇到密钥/域名/权限等真实阻塞时才汇报阻塞。"
   },
   "state": {
-    "nextIndex": 7,
+    "nextIndex": 8,
     "completed": [
       1,
       2,
@@ -28,12 +28,13 @@
       4,
       5,
       6,
+      7,
       13,
       31
     ],
     "failed": [],
-    "lastRunAt": "2026-05-27T18:07:30Z",
-    "lastResult": "success: deployed emotion-diary to https://mood.hanruize.com and https://mood.tantu.ai; Git commit d1ef311; Coolify app hsbwu7frhwvsochvwtq6ftoo deployment finished; Nginx proxy configured on port 18093; homepage updated/redeployed; HTTPS/MIME/signature/homepage smoke tests passed."
+    "lastRunAt": "2026-05-28T18:05:30Z",
+    "lastResult": "success: deployed focus-breathing to https://breath.hanruize.com and https://breath.tantu.ai; Git commits b0988f4 and b0198ed; Coolify app mjfeclvcmy35m17azhqrvqge deployment d113deiindxe45tln5rvy9yn finished; Nginx proxy configured on port 18094; homepage updated/redeployed; HTTPS/MIME/signature/homepage/interaction smoke tests passed."
   },
   "apps": [
     {
