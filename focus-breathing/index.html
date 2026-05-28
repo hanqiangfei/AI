@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f766e">
+  <title>专注呼吸训练</title>
+  <link rel="stylesheet" href="/style.css?v=20260528">
+  <script defer src="/app.js?v=20260528"></script>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <p class="eyebrow">Focus Breathing · 课前一分钟安静下来</p>
+      <h1>专注呼吸训练</h1>
+      <p class="sub">跟着圆环节奏吸气、停留、呼气，适合学生课前、作业前和睡前放松使用。</p>
+    </section>
+
+    <section class="panel practice" aria-label="呼吸练习区">
+      <div class="breath-stage">
+        <div class="orb" id="orb"><span id="phaseText">准备</span></div>
+        <p id="guideText">选择一个节奏，按开始，先把肩膀放松。</p>
+        <p class="counter"><span id="roundNow">0</span>/<span id="roundTotal">6</span> 轮 · <span id="timeLeft">00:00</span></p>
+      </div>
+      <div class="controls">
+        <label>训练节奏
+          <select id="modeSelect">
+            <option value="calm">平稳专注：吸4停2呼6</option>
+            <option value="box">方块呼吸：吸4停4呼4停4</option>
+            <option value="sleep">睡前放松：吸4呼8</option>
+          </select>
+        </label>
+        <label>训练轮数
+          <input id="roundInput" type="range" min="3" max="12" value="6">
+          <span id="roundLabel">6 轮</span>
+        </label>
+        <div class="actions">
+          <button id="startBtn" class="primary">开始训练</button>
+          <button id="pauseBtn" class="ghost">暂停</button>
+          <button id="resetBtn" class="ghost">重置</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <h2>专注计时</h2>
+        <p class="hint">呼吸结束后，可以立刻进入 5/15/25 分钟专注学习。</p>
+        <div class="timer" id="focusTime">05:00</div>
+        <div class="chips" id="focusChoices">
+          <button data-min="5" class="active">5 分钟</button>
+          <button data-min="15">15 分钟</button>
+          <button data-min="25">25 分钟</button>
+        </div>
+        <div class="actions">
+          <button id="focusStart" class="primary">开始专注</button>
+          <button id="focusReset" class="ghost">重置专注</button>
+        </div>
+      </article>
+
+      <article class="panel">
+        <h2>今日小记录</h2>
+        <div class="stat-row"><b id="doneBreath">0</b><span>次呼吸训练</span></div>
+        <div class="stat-row"><b id="doneFocus">0</b><span>分钟专注</span></div>
+        <p id="encourage" class="quote">小小一轮呼吸，也是在照顾自己的大脑。</p>
+        <button id="clearStats" class="ghost full">清空本机今日记录</button>
+      </article>
+    </section>
+
+    <section class="panel safety">
+      <h2>温柔提醒</h2>
+      <p>如果练习时头晕，请立刻停止，改成自然呼吸。若长期焦虑、失眠或情绪影响生活，请告诉家人、老师或专业人士。</p>
+    </section>
+
+    <footer class="signature">寒雨佳泽 3620007@QQ.com 2026年5月28日</footer>
+  </main>
+</body>
+</html>
