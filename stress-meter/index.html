@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2563eb">
+  <title>压力小测与调节</title>
+  <link rel="stylesheet" href="/style.css?v=20260529">
+  <script defer src="/app.js?v=20260529"></script>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <p class="eyebrow">Stress Meter · 给压力一个刻度</p>
+      <h1>压力小测与调节</h1>
+      <p class="sub">用 8 个轻量问题看见最近的压力来源，再生成适合学生的放松与行动建议。</p>
+    </section>
+
+    <section class="panel intro" aria-label="使用说明">
+      <div><b>温柔说明</b><p>这不是医学诊断，只是帮助你和家人更快发现“哪里需要被照顾”。如果压力持续很高，请及时告诉家人、老师或专业人士。</p></div>
+      <button id="resetBtn" class="ghost">重新填写</button>
+    </section>
+
+    <section class="grid">
+      <form id="quiz" class="panel quiz" aria-label="压力自评问卷"></form>
+      <aside class="panel result" aria-label="压力结果">
+        <h2>今日压力刻度</h2>
+        <div class="meter"><div id="bar" class="bar"></div><span id="scoreText">0 / 24</span></div>
+        <div id="level" class="level calm">先完成左侧小测</div>
+        <div id="source" class="source">主要压力来源会显示在这里。</div>
+        <div id="advice" class="advice">完成后会给出 3 条可执行建议。</div>
+        <button id="saveBtn" class="primary" type="button">保存今日结果</button>
+      </aside>
+    </section>
+
+    <section class="panel tools">
+      <h2>3 分钟调节工具箱</h2>
+      <div class="tool-grid">
+        <button class="tool" data-tip="把一件大任务切成：打开书本、写标题、做第 1 题。先完成最小一步。">📌 任务切小</button>
+        <button class="tool" data-tip="吸气 4 秒，呼气 6 秒，重复 6 次。肩膀放松，不要憋气。">🌬️ 慢呼吸</button>
+        <button class="tool" data-tip="写下：我现在担心的是……我能做的一步是……我可以求助的人是……">✍️ 担心落纸</button>
+        <button class="tool" data-tip="离开屏幕 2 分钟，喝水、看远处、伸展脖子和手腕。">🧃 身体重启</button>
+      </div>
+      <p id="toolTip" class="tip">点一个工具，马上得到一条小方法。</p>
+    </section>
+
+    <section class="panel history">
+      <h2>本机最近记录</h2>
+      <div id="historyList" class="history-list"></div>
+    </section>
+
+    <footer class="signature">寒雨佳泽 3620007@QQ.com 2026年5月29日</footer>
+  </main>
+</body>
+</html>
