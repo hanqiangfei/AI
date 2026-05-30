@@ -1,1 +1,328 @@
-/root/.openclaw/app-factory/monthly-plan-2026-05.json
+{
+  "version": 1,
+  "timezone": "Asia/Shanghai",
+  "schedule": "每天凌晨 02:00 自动开发并部署 1 个应用",
+  "repo": "github.com-hanqiangfei-ai:hanqiangfei/AI.git",
+  "homepage": {
+    "projectPath": "works-home",
+    "primaryUrl": "https://home.hanruize.com",
+    "legacyUrl": "https://home.tantu.ai"
+  },
+  "deployment": {
+    "coolifyUrl": "https://coolify.hanruize.com",
+    "projectName": "AI Apps",
+    "environment": "production",
+    "primaryDomainSuffix": "hanruize.com",
+    "legacyDomainSuffix": "tantu.ai",
+    "signature": "寒雨佳泽 3620007@QQ.com 【日期】",
+    "signatureRule": "底部署名使用当天日期，例如：寒雨佳泽 3620007@QQ.com 2026年5月23日",
+    "autoPublish": true,
+    "autoPublishRule": "以后默认自动发布：开发完成后直接推送 GitHub、Coolify/Nginx 发布、更新作品主页并做线上 smoke test；只有遇到密钥/域名/权限等真实阻塞时才汇报阻塞。"
+  },
+  "state": {
+    "nextIndex": 10,
+    "completed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      13,
+      31
+    ],
+    "failed": [],
+    "lastRunAt": "2026-05-30T18:05:10Z",
+    "lastResult": "success: deployed history-timeline to https://history.hanruize.com and https://history.tantu.ai; Git commit 398c425; Coolify app gfirihq5rtfxd72yi10z3od4 deployment queued/finished with running status; Nginx proxy configured on port 18096; homepage updated/redeployed; HTTPS/MIME/signature/homepage/basic interaction smoke tests passed."
+  },
+  "apps": [
+    {
+      "index": 1,
+      "slug": "math-quick",
+      "name": "数学口算训练",
+      "domain": "math.hanruize.com",
+      "legacyDomain": "math.tantu.ai",
+      "type": "learning",
+      "brief": "初中/小学口算、四则运算、分数小数练习，计时与错题回顾。"
+    },
+    {
+      "index": 2,
+      "slug": "physics-buoyancy",
+      "name": "浮力闯关小游戏",
+      "domain": "buoyancy.hanruize.com",
+      "legacyDomain": "buoyancy.tantu.ai",
+      "type": "physics",
+      "brief": "调节物体材料、液体密度、体积和空心程度，观察漂浮/悬浮/下沉并理解阿基米德浮力原理。"
+    },
+    {
+      "index": 3,
+      "slug": "force-motion",
+      "name": "力与运动模拟器",
+      "domain": "force.hanruize.com",
+      "legacyDomain": "force.tantu.ai",
+      "type": "physics",
+      "brief": "通过小车、摩擦力、速度-时间图像，直观看懂力、加速度与运动状态变化。"
+    },
+    {
+      "index": 4,
+      "slug": "electric-circuit",
+      "name": "电路搭建练习",
+      "domain": "circuit.hanruize.com",
+      "legacyDomain": "circuit.tantu.ai",
+      "type": "physics",
+      "brief": "串联/并联电路拖拽搭建，观察电流、电压、电阻关系，练习欧姆定律。"
+    },
+    {
+      "index": 5,
+      "slug": "optics-mirror",
+      "name": "光学成像小课堂",
+      "domain": "optics.hanruize.com",
+      "legacyDomain": "optics.tantu.ai",
+      "type": "physics",
+      "brief": "凸透镜、平面镜、光的反射与折射可视化，帮助理解成像规律。"
+    },
+    {
+      "index": 6,
+      "slug": "emotion-diary",
+      "name": "情绪日记",
+      "domain": "mood.hanruize.com",
+      "legacyDomain": "mood.tantu.ai",
+      "type": "psychology",
+      "brief": "记录每日心情、触发事件和自我安慰语，生成温和的情绪变化视图。"
+    },
+    {
+      "index": 7,
+      "slug": "focus-breathing",
+      "name": "专注呼吸训练",
+      "domain": "breath.hanruize.com",
+      "legacyDomain": "breath.tantu.ai",
+      "type": "psychology",
+      "brief": "适合学生课前/睡前使用的呼吸节奏、放松引导和专注计时小工具。"
+    },
+    {
+      "index": 8,
+      "slug": "stress-meter",
+      "name": "压力小测与调节",
+      "domain": "stress.hanruize.com",
+      "legacyDomain": "stress.tantu.ai",
+      "type": "psychology",
+      "brief": "轻量压力自评、压力来源归类与可执行的放松建议，不替代专业诊断。"
+    },
+    {
+      "index": 9,
+      "slug": "history-timeline",
+      "name": "历史时间轴",
+      "domain": "history.hanruize.com",
+      "legacyDomain": "history.tantu.ai",
+      "type": "learning",
+      "brief": "中国古代史/近代史关键事件时间轴与排序挑战。"
+    },
+    {
+      "index": 10,
+      "slug": "typing-practice",
+      "name": "中文打字练习",
+      "domain": "typing.hanruize.com",
+      "legacyDomain": "typing.tantu.ai",
+      "type": "skill",
+      "brief": "中文句子打字速度、准确率、练习记录。"
+    },
+    {
+      "index": 11,
+      "slug": "memory-cards",
+      "name": "记忆翻牌",
+      "domain": "memory.hanruize.com",
+      "legacyDomain": "memory.tantu.ai",
+      "type": "game",
+      "brief": "适合学生训练专注力的翻牌记忆小游戏。"
+    },
+    {
+      "index": 12,
+      "slug": "sudoku-junior",
+      "name": "数独练习",
+      "domain": "sudoku.hanruize.com",
+      "legacyDomain": "sudoku.tantu.ai",
+      "type": "game",
+      "brief": "4x4/6x6/9x9 数独，提示、校验与难度选择。"
+    },
+    {
+      "index": 13,
+      "slug": "maze-runner",
+      "name": "霓虹迷宫大冒险",
+      "domain": "maze.hanruize.com",
+      "legacyDomain": "maze.tantu.ai",
+      "type": "game",
+      "brief": "炫酷随机迷宫，钥匙、宝石、传送门和陷阱挑战，支持键盘与手机按钮。"
+    },
+    {
+      "index": 14,
+      "slug": "2048-study",
+      "name": "2048 数字合成",
+      "domain": "2048.hanruize.com",
+      "legacyDomain": "2048.tantu.ai",
+      "type": "game",
+      "brief": "经典 2048，移动端兼容，训练数字策略。"
+    },
+    {
+      "index": 15,
+      "slug": "minesweeper",
+      "name": "扫雷入门",
+      "domain": "mine.hanruize.com",
+      "legacyDomain": "mine.tantu.ai",
+      "type": "game",
+      "brief": "扫雷小游戏，带新手教学与难度选择。"
+    },
+    {
+      "index": 16,
+      "slug": "tetris-lite",
+      "name": "俄罗斯方块 Lite",
+      "domain": "tetris.hanruize.com",
+      "legacyDomain": "tetris.tantu.ai",
+      "type": "game",
+      "brief": "轻量俄罗斯方块，支持手机按钮与键盘。"
+    },
+    {
+      "index": 17,
+      "slug": "pinyin-master",
+      "name": "拼音练习",
+      "domain": "pinyin.hanruize.com",
+      "legacyDomain": "pinyin.tantu.ai",
+      "type": "learning",
+      "brief": "声母韵母、声调、易错拼音练习。"
+    },
+    {
+      "index": 18,
+      "slug": "radical-lookup",
+      "name": "汉字部首练习",
+      "domain": "hanzi.hanruize.com",
+      "legacyDomain": "hanzi.tantu.ai",
+      "type": "learning",
+      "brief": "常见汉字部首、结构、笔画数速查与练习。"
+    },
+    {
+      "index": 19,
+      "slug": "reading-clock",
+      "name": "时钟认读",
+      "domain": "clock.hanruize.com",
+      "legacyDomain": "clock.tantu.ai",
+      "type": "learning",
+      "brief": "模拟时钟、时间认读、经过时间计算。"
+    },
+    {
+      "index": 20,
+      "slug": "fraction-visual",
+      "name": "分数可视化",
+      "domain": "fraction.hanruize.com",
+      "legacyDomain": "fraction.tantu.ai",
+      "type": "math",
+      "brief": "用图形理解分数、约分、通分与大小比较。"
+    },
+    {
+      "index": 21,
+      "slug": "equation-solver",
+      "name": "一元一次方程练习",
+      "domain": "equation.hanruize.com",
+      "legacyDomain": "equation.tantu.ai",
+      "type": "math",
+      "brief": "生成一元一次方程，逐步提示解题。"
+    },
+    {
+      "index": 22,
+      "slug": "geometry-helper",
+      "name": "几何图形助手",
+      "domain": "geometry.hanruize.com",
+      "legacyDomain": "geometry.tantu.ai",
+      "type": "math",
+      "brief": "三角形、圆、平行四边形面积周长公式与交互图。"
+    },
+    {
+      "index": 23,
+      "slug": "daily-planner",
+      "name": "学生每日计划",
+      "domain": "planner.hanruize.com",
+      "legacyDomain": "planner.tantu.ai",
+      "type": "tool",
+      "brief": "学习任务清单、番茄钟、完成打卡。"
+    },
+    {
+      "index": 24,
+      "slug": "pomodoro-focus",
+      "name": "专注番茄钟",
+      "domain": "focus.hanruize.com",
+      "legacyDomain": "focus.tantu.ai",
+      "type": "tool",
+      "brief": "25分钟专注、短休息、学习记录。"
+    },
+    {
+      "index": 25,
+      "slug": "habit-tracker",
+      "name": "习惯打卡",
+      "domain": "habit.hanruize.com",
+      "legacyDomain": "habit.tantu.ai",
+      "type": "tool",
+      "brief": "阅读、运动、背单词等每日习惯打卡。"
+    },
+    {
+      "index": 26,
+      "slug": "random-picker",
+      "name": "课堂随机点名",
+      "domain": "picker.hanruize.com",
+      "legacyDomain": "picker.tantu.ai",
+      "type": "tool",
+      "brief": "名单导入、随机抽取、小组抽签。"
+    },
+    {
+      "index": 27,
+      "slug": "score-board",
+      "name": "课堂计分板",
+      "domain": "score.hanruize.com",
+      "legacyDomain": "score.tantu.ai",
+      "type": "tool",
+      "brief": "小组加减分、排名、课堂互动计分。"
+    },
+    {
+      "index": 28,
+      "slug": "lab-safety",
+      "name": "实验安全问答",
+      "domain": "lab.hanruize.com",
+      "legacyDomain": "lab.tantu.ai",
+      "type": "science",
+      "brief": "化学/物理实验安全规则问答。"
+    },
+    {
+      "index": 29,
+      "slug": "weather-kids",
+      "name": "天气与穿衣建议",
+      "domain": "weatherkid.hanruize.com",
+      "legacyDomain": "weatherkid.tantu.ai",
+      "type": "tool",
+      "brief": "城市天气展示、穿衣和出行建议。"
+    },
+    {
+      "index": 30,
+      "slug": "works-gallery",
+      "name": "作品画廊升级",
+      "domain": "gallery.hanruize.com",
+      "legacyDomain": "gallery.tantu.ai",
+      "type": "portal",
+      "brief": "将主页升级成作品画廊，支持分类、搜索、状态展示。"
+    },
+    {
+      "index": 31,
+      "slug": "idiom-chain",
+      "name": "成语接龙练习器",
+      "domain": "idiom.hanruize.com",
+      "legacyDomain": "idiom.tantu.ai",
+      "type": "learning",
+      "brief": "60 秒限时成语接龙，内置成语库、提示、计分和接龙记录，适合中文积累训练。"
+    }
+  ],
+  "weeklyFocus": {
+    "fromIndex": 2,
+    "toIndex": 8,
+    "theme": "未来一周以物理、心理主题为主",
+    "note": "爷于 2026-05-23 指定；保留第1个已完成应用，其后7天调整为4个物理 + 3个心理方向。"
+  }
+}
