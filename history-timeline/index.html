@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7c2d12">
+  <title>历史时间轴</title>
+  <link rel="stylesheet" href="/style.css?v=20260530">
+  <script defer src="/app.js?v=20260530"></script>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <p class="eyebrow">History Timeline · 把历史排成一条线</p>
+      <h1>历史时间轴</h1>
+      <p class="sub">用可视化时间轴、朝代速览和排序挑战，帮助中小学生记住中国古代史与近代史关键事件。</p>
+    </section>
+
+    <section class="panel controls" aria-label="时间轴筛选">
+      <div>
+        <b>选择主题</b>
+        <p>点击下方主题，时间轴会自动聚焦相关事件。</p>
+      </div>
+      <div class="tabs">
+        <button class="tab active" data-filter="all">全部</button>
+        <button class="tab" data-filter="ancient">古代史</button>
+        <button class="tab" data-filter="modern">近代史</button>
+        <button class="tab" data-filter="culture">文化科技</button>
+      </div>
+    </section>
+
+    <section class="grid">
+      <section class="panel" aria-label="历史时间轴">
+        <h2>关键事件时间轴</h2>
+        <div id="timeline" class="timeline"></div>
+      </section>
+      <aside class="panel side" aria-label="学习卡片">
+        <h2>今日速记</h2>
+        <div id="flashCard" class="flash"></div>
+        <button id="newCard" class="primary" type="button">换一张速记卡</button>
+        <div class="hint">小窍门：先记“前后顺序”，再补年份和意义。</div>
+      </aside>
+    </section>
+
+    <section class="panel challenge" aria-label="排序挑战">
+      <div class="challenge-head">
+        <div><h2>排序挑战</h2><p>把 5 个事件按发生时间从早到晚排列，适合课后 3 分钟复习。</p></div>
+        <button id="shuffleBtn" class="ghost" type="button">重新出题</button>
+      </div>
+      <div id="quizList" class="quiz-list"></div>
+      <div class="actions">
+        <button id="checkBtn" class="primary" type="button">检查排序</button>
+        <button id="revealBtn" class="ghost" type="button">显示答案</button>
+      </div>
+      <div id="result" class="result">拖不动也没关系：用每项右侧 ↑ ↓ 按钮调整顺序。</div>
+    </section>
+
+    <footer class="signature">寒雨佳泽 3620007@QQ.com 2026年5月30日</footer>
+  </main>
+</body>
+</html>
